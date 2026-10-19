@@ -26,8 +26,6 @@ SOCIAL = {
     "instagram": "",
     "linkedin": "",
     "x": "",
-    "pinterest": "",
-    "youtube": "",
     "whatsapp": "",
 }
 
