@@ -24,6 +24,7 @@ ICON = {
     "arrow": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>',
     "phone": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>',
     "mail": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+    "pin": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
     "plus": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
     "chev": '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m2 4 4 4 4-4"/></svg>',
     "list": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" width="16" height="16"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>',
@@ -32,6 +33,36 @@ ICON = {
     "mesh": '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 4h40M4 4l10 12L24 4l10 12L44 4M14 16 4 28l10 12 10-12-10-12Zm20 0L24 28l10 12 10-12-10-12ZM24 28 14 40M24 28l10 12"/></svg>',
     "island": '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 4c6 2 12 9 14 17s-1 17-8 21c-4 2-9 1-12-3-4-5-6-12-5-20 1-6 5-13 11-15Z"/><circle cx="20" cy="30" r="2"/><path d="M4 44h40"/></svg>',
 }
+
+SOCIAL_ICON = {
+    "facebook": '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.3a22 22 0 0 0-2.5-.1c-2.5 0-4.2 1.5-4.2 4.3v2.3H7.4V14h2.7v8z"/></svg>',
+    "instagram": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>',
+    "linkedin": '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 9h3.3v10.5H4.5zM6.1 3.8a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8M10 9h3.2v1.4h.1c.4-.8 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5v5.8h-3.3v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7v5.2H10z"/></svg>',
+    "x": '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.2 3.5h3l-6.6 7.6 7.8 9.4h-6.1l-4.8-5.9-5.5 5.9h-3l7-7.9-7.5-9.1h6.3l4.3 5.4zm-1 15.2h1.6L7.9 5.2H6.1z"/></svg>',
+    "pinterest": '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-3.6 18.9c-.1-.8-.1-2 0-2.8l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.5 1.8-2.5.9 0 1.3.7 1.3 1.4 0 .9-.6 2.2-.8 3.4-.3 1 .5 1.9 1.5 1.9 1.8 0 3.2-1.9 3.2-4.7 0-2.4-1.8-4.1-4.3-4.1-2.9 0-4.6 2.2-4.6 4.4 0 .9.3 1.8.8 2.3l.1.4-.3 1.1c0 .2-.2.3-.4.2-1.3-.6-2.1-2.5-2.1-4 0-3.3 2.4-6.3 6.9-6.3 3.6 0 6.4 2.6 6.4 6 0 3.6-2.3 6.5-5.4 6.5-1.1 0-2.1-.6-2.4-1.2l-.7 2.5c-.2.9-.9 2.1-1.3 2.8A9.8 9.8 0 1 0 12 2.2"/></svg>',
+    "youtube": '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2 27 27 0 0 0 2 12a27 27 0 0 0 .4 4.8 2.6 2.6 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8A27 27 0 0 0 22 12a27 27 0 0 0-.4-4.8M10 15V9l5.2 3z"/></svg>',
+    "whatsapp": '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.8-1.3A9.4 9.4 0 1 0 12 2.5m0 17.1c-1.4 0-2.8-.4-4-1.1l-.3-.2-2.8.8.8-2.8-.2-.3A7.7 7.7 0 1 1 12 19.6m4.2-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.3 6.3 0 0 1-3.1-2.7c-.2-.4.2-.4.7-1.3.1-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1-.1-.2-.2-.2-.5-.4"/></svg>',
+}
+SOCIAL_LABEL = {"facebook": "Facebook", "instagram": "Instagram", "linkedin": "LinkedIn", "x": "X", "pinterest": "Pinterest", "youtube": "YouTube", "whatsapp": "WhatsApp"}
+
+
+def social_profiles():
+    """(key, label, href) for every social profile filled in content.SOCIAL."""
+    out = []
+    for key, val in SOCIAL.items():
+        if not val:
+            continue
+        href = f"https://wa.me/{val}" if key == "whatsapp" else val
+        out.append((key, SOCIAL_LABEL[key], href))
+    return out
+
+
+def social_row(cls=""):
+    links = "".join(
+        f'<a class="srow__a srow__a--{k}" href="{e(h)}" target="_blank" rel="noopener" aria-label="{l}">{SOCIAL_ICON[k]}</a>'
+        for k, l, h in social_profiles())
+    return f'<div class="srow {cls}">{links}</div>' if links else ""
+
 
 e = html.escape
 
@@ -205,6 +236,7 @@ def header(page, dark=False):
     <a href="tel:{phone[1]}">{phone[0]}</a>
     <a href="mailto:{EMAIL}">{EMAIL}</a>
     <span>{', '.join(ADDRESS)}</span>
+    {social_row("srow--drawer")}
   </div>
 </div>
 <main id="main">
@@ -226,6 +258,21 @@ def cta_band(page, title="Tell us what <em>you need.</em>", text="Send us the pr
 """
 
 
+def quickbar():
+    """Floating quick-access bar on the left edge (desktop and tablet)."""
+    mapq = MAP_Q.replace(" ", "+").replace(",", "%2C")
+    items = [
+        ("call", "Call " + PHONES[0][0], f"tel:{PHONES[0][1]}", ICON["phone"], False),
+        ("mail", "Email us", f"mailto:{EMAIL}", ICON["mail"], False),
+        ("map", "Find us on the map", f"https://www.google.com/maps/search/?api=1&amp;query={mapq}", ICON["pin"], True),
+    ] + [(k, l, e(h), SOCIAL_ICON[k], True) for k, l, h in social_profiles()]
+    links = "".join(
+        f'<li><a class="qa qa--{k}" href="{h}"{' target="_blank" rel="noopener"' if ext else ''} aria-label="{e(l)}">'
+        f'<span class="qa__i">{icon}</span><span class="qa__l">{e(l)}</span></a></li>'
+        for k, l, h, icon, ext in items)
+    return f'<nav class="qbar" aria-label="Quick access"><ul>{links}</ul></nav>'
+
+
 def footer(page, with_cta=True):
     cats = "".join(f'<li><a href="{rel(page, c["slug"])}">{e(c["name"])}</a></li>' for c in CATEGORIES)
     phones = "".join(f'<li><a href="tel:{t}">{d}</a> <span style="opacity:.6">· {l}</span></li>' for d, t, l in PHONES)
@@ -239,6 +286,7 @@ def footer(page, with_cta=True):
         <a class="brand" href="{rel(page, '')}">{img(page, 'logo.png', '', w=121, h=97)}<span class="brand__name">J.P. Fernando <em>&amp;</em> Sons</span></a>
         <p>Manufacturers, importers and distributors of nylon and cotton fishing nets, twines, lines and fishing accessories. Colombo, since {FOUNDED}.</p>
         <p class="ftr__si" lang="si">{NAME_SI}</p>
+        {social_row("srow--footer")}
       </div>
       <div>
         <h3 class="label">Products</h3>
@@ -268,6 +316,7 @@ def footer(page, with_cta=True):
     </div>
   </div>
 </footer>
+{quickbar()}
 <div class="mbar" aria-label="Quick contact">
   <a href="tel:{PHONES[0][1]}">{ICON['phone']} Call</a>
   <a href="{rel(page, 'contact-us/')}#enquiry">Get a quote</a>

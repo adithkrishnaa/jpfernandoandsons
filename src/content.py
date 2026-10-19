@@ -18,6 +18,19 @@ FAX = "+94 11 224 5163"
 HOURS = [("Monday – Friday", "9:00 – 17:00"), ("Saturday", "9:00 – 13:00"), ("Sunday", "Closed")]
 MAP_Q = "287/1 Sea Street, Colombo 11, Sri Lanka"
 
+# Social media profiles for the floating quick-access bar, menu and footer.
+# Paste the full profile URL to show an icon; leave "" to hide it.
+# whatsapp takes the number in international format, digits only, e.g. "94767079587".
+SOCIAL = {
+    "facebook": "",
+    "instagram": "",
+    "linkedin": "",
+    "x": "",
+    "pinterest": "",
+    "youtube": "",
+    "whatsapp": "",
+}
+
 # Enquiry form delivery. Fill in ONE of these, then run: python src/build.py
 #   Web3Forms: paste the access key emailed to you (endpoint is filled in automatically)
 #   Formspree: paste your form URL, e.g. "https://formspree.io/f/abcdwxyz"

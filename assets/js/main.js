@@ -56,6 +56,13 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* ---------- quick-access bar: staggered slide-in ---------- */
+  var qbar = $(".qbar");
+  if (qbar) {
+    $$("li", qbar).forEach(function (li, i) { li.style.setProperty("--n", i); });
+    requestAnimationFrame(function () { qbar.classList.add("is-in"); });
+  }
+
   /* ---------- mega menu ---------- */
   $$(".nav__item").forEach(function (item) {
     var btn = item.querySelector("button");
