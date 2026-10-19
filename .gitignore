@@ -1,0 +1,11 @@
+# Local tool settings
+.claude/
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs and OS clutter
+*.log
+.DS_Store
+Thumbs.db
