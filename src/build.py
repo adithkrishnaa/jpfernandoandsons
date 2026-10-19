@@ -2,7 +2,7 @@
 
     python src/build.py
 
-Writes the finished site to ./site (assets in site/assets are kept).
+Writes the finished pages to the repository root (assets in ./assets are kept).
 Pages keep the original WordPress URLs (e.g. /ropes/pp/).
 """
 import html
@@ -14,7 +14,7 @@ from datetime import date
 sys.path.insert(0, os.path.dirname(__file__))
 from content import *  # noqa: E402,F401,F403
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "site"))
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 CAT_BY_SLUG = {c["slug"]: c for c in CATEGORIES}
 
 # --------------------------------------------------------------------------
@@ -46,7 +46,7 @@ def rel(page, target):
 
 
 def img_size(name):
-    """Read pixel size of a JPEG/PNG/WebP in site/assets/img (stdlib only)."""
+    """Read pixel size of a JPEG/PNG/WebP in assets/img (stdlib only)."""
     import struct
     path = os.path.join(ROOT, "assets", "img", name)
     with open(path, "rb") as f:

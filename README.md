@@ -6,13 +6,12 @@ A rebuilt static website for jpfernandoandsons.com. It has no framework and no s
 
 | Folder | What it is |
 |---|---|
-| `site/` | **The finished website.** Upload the contents of this folder to the web host. |
+| *(repo root)* | **The finished website**: `index.html`, the page folders, `assets/`, `404.html`, `sitemap.xml`, `robots.txt`. Upload these to the web host. |
 | `src/content.py` | All page text, products, brands and contact details. Edit this to change content. |
-| `src/build.py` | Page templates. Generates every HTML page into `site/`. |
-| `site/assets/css/main.css` | Design system: colours, type, layout, animation. |
-| `site/assets/js/main.js` | Interactions: the hero net, scroll reveals, the product explorer, the enquiry list and forms. |
-| `site/assets/img/` | Images, all taken from the original site and the company banner. |
-| `jpfernandoandsons-site/` | Offline copy of the old WordPress site, kept for reference. |
+| `src/build.py` | Page templates. Generates every HTML page into the repo root. |
+| `assets/css/main.css` | Design system: colours, type, layout, animation. |
+| `assets/js/main.js` | Interactions: the hero net, scroll reveals, the product explorer, the enquiry list and forms. |
+| `assets/img/` | Images, all taken from the original site and the company banner. |
 
 ## Change content and rebuild
 
@@ -23,7 +22,7 @@ python src/build.py
 Then preview locally:
 
 ```bash
-python -m http.server 8770 --directory site
+python -m http.server 8770
 ```
 
 Open http://localhost:8770. Pages use clean URLs (`/ropes/pp/`), so preview through a server rather than by double-clicking the files.
@@ -41,7 +40,7 @@ To have forms deliver straight to an inbox, open `src/content.py` and fill in on
 - **Web3Forms** (recommended): paste the access key into `FORM_ACCESS_KEY`.
 - **Formspree** or any other service: paste the form URL into `FORM_ENDPOINT`.
 
-Then run `python src/build.py` and upload `site/` again. Every form on the site will send directly, show a real success or failure message, and include the visitor's enquiry list. A hidden spam trap blocks simple bots.
+Then run `python src/build.py` and upload the website files again. Every form on the site will send directly, show a real success or failure message, and include the visitor's enquiry list. A hidden spam trap blocks simple bots.
 
 ## Things to confirm with the client
 
