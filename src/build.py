@@ -47,19 +47,28 @@ SOCIAL_LABEL = {"facebook": "Facebook", "instagram": "Instagram", "linkedin": "L
 
 
 def social_profiles():
-    """(key, label, href) for every social profile filled in content.SOCIAL."""
+    """(key, label, href) for every social network. href is None while the
+    profile URL in content.SOCIAL is still empty (icon shows, link pending)."""
     out = []
     for key, val in SOCIAL.items():
         if not val:
+            out.append((key, SOCIAL_LABEL[key], None))
             continue
         href = f"https://wa.me/{val}" if key == "whatsapp" else val
         out.append((key, SOCIAL_LABEL[key], href))
     return out
 
 
+def link_attrs(href, label):
+    """Anchor attributes: a real external link, or an inert placeholder until the URL is added."""
+    if href:
+        return f'href="{e(href)}" target="_blank" rel="noopener" aria-label="{e(label)}"'
+    return f'role="link" aria-disabled="true" aria-label="{e(label)} (link coming soon)" title="{e(label)} — link coming soon"'
+
+
 def social_row(cls=""):
     links = "".join(
-        f'<a class="srow__a srow__a--{k}" href="{e(h)}" target="_blank" rel="noopener" aria-label="{l}">{SOCIAL_ICON[k]}</a>'
+        f'<a class="srow__a srow__a--{k}" {link_attrs(h, l)}>{SOCIAL_ICON[k]}</a>'
         for k, l, h in social_profiles())
     return f'<div class="srow {cls}">{links}</div>' if links else ""
 
@@ -265,11 +274,15 @@ def quickbar():
         ("call", "Call " + PHONES[0][0], f"tel:{PHONES[0][1]}", ICON["phone"], False),
         ("mail", "Email us", f"mailto:{EMAIL}", ICON["mail"], False),
         ("map", "Find us on the map", f"https://www.google.com/maps/search/?api=1&amp;query={mapq}", ICON["pin"], True),
-    ] + [(k, l, e(h), SOCIAL_ICON[k], True) for k, l, h in social_profiles()]
+    ]
     links = "".join(
         f'<li><a class="qa qa--{k}" href="{h}"{' target="_blank" rel="noopener"' if ext else ''} aria-label="{e(l)}">'
         f'<span class="qa__i">{icon}</span><span class="qa__l">{e(l)}</span></a></li>'
         for k, l, h, icon, ext in items)
+    links += "".join(
+        f'<li><a class="qa qa--{k}" {link_attrs(h, l)}><span class="qa__i">{SOCIAL_ICON[k]}</span>'
+        f'<span class="qa__l">{e(l) if h else e(l) + " — soon"}</span></a></li>'
+        for k, l, h in social_profiles())
     return f'<nav class="qbar" aria-label="Quick access"><ul>{links}</ul></nav>'
 
 

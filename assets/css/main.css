@@ -673,6 +673,12 @@ main { display: block; }
 .qa--pinterest { --c: #e60023; }
 .qa--youtube { --c: #ff0000; }
 .qa--whatsapp { --c: #25d366; }
+.qa[aria-disabled="true"], .srow__a[aria-disabled="true"] { cursor: default; }
+@media (max-height: 700px) {
+  .qa { width: 38px; height: 38px; }
+  .qa__i { flex-basis: 38px; height: 38px; }
+  .qa__i svg { width: 16px; height: 16px; }
+}
 .js .qbar li { transform: translateX(-110%); transition: transform 0.7s var(--ease-out); transition-delay: calc(0.6s + var(--n, 0) * 0.07s); }
 .js .qbar.is-in li { transform: none; }
 .menu-open .qbar { visibility: hidden; }
