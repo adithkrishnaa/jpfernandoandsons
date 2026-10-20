@@ -33,7 +33,7 @@ All 16 original WordPress URLs are kept, so existing links and search results st
 
 ## Enquiry form: important
 
-Right now, pressing **Send enquiry** opens the visitor's email app with the enquiry written out, addressed to hello@jpfernandoandsons.com. Nothing is sent without that email app.
+Right now, pressing **Send enquiry** opens the visitor's email app with the enquiry written out, addressed to jpfernandoandsons287@gmail.com. Nothing is sent without that email app.
 
 To have forms deliver straight to an inbox, open `src/content.py` and fill in one value:
 

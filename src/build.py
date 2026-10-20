@@ -179,7 +179,7 @@ def head(page, title, desc, og_img="banner.jpg", schema=None):
 <link rel="icon" href="{rel(page, 'assets/img/logo.png')}" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Instrument+Serif:ital@0;1&family=Noto+Sans+Sinhala:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Instrument+Serif:ital@0;1&family=Noto+Sans+Sinhala:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&display=swap">
 <link rel="stylesheet" href="{rel(page, 'assets/css/main.css')}">
 {ld}
 </head>
@@ -243,6 +243,7 @@ def header(page, dark=False):
   <div class="drawer__sub">{drawer_sub}</div>
   <div class="drawer__foot">
     <a href="tel:{phone[1]}">{phone[0]}</a>
+    <a href="https://wa.me/{MOBILE[1].lstrip("+")}" target="_blank" rel="noopener">WhatsApp {MOBILE[0]}</a>
     <a href="mailto:{EMAIL}">{EMAIL}</a>
     <span>{', '.join(ADDRESS)}</span>
     {social_row("srow--drawer")}
@@ -299,6 +300,7 @@ def footer(page, with_cta=True):
         <a class="brand" href="{rel(page, '')}">{img(page, 'logo.png', '', w=121, h=97)}<span class="brand__name">J.P. Fernando <em>&amp;</em> Sons</span></a>
         <p>Manufacturers, importers and distributors of nylon and cotton fishing nets, twines, lines and fishing accessories. Colombo, since {FOUNDED}.</p>
         <p class="ftr__si" lang="si">{NAME_SI}</p>
+        <p class="ftr__si ftr__ta" lang="ta">{NAME_TA}</p>
         {social_row("srow--footer")}
       </div>
       <div>
@@ -319,7 +321,7 @@ def footer(page, with_cta=True):
       <div>
         <h3 class="label">Visit &amp; call</h3>
         <address style="font-style:normal">{'<br>'.join(ADDRESS)}</address>
-        <ul style="margin-top:14px">{phones}<li>Fax: {FAX}</li><li><a href="mailto:{EMAIL}">{EMAIL}</a></li></ul>
+        <ul style="margin-top:14px">{phones}<li><a href="tel:{MOBILE[1]}">{MOBILE[0]}</a> <span style="opacity:.6">· Mobile</span></li><li><a href="https://wa.me/{MOBILE[1].lstrip("+")}" target="_blank" rel="noopener">WhatsApp {MOBILE[0]}</a></li><li><a href="mailto:{EMAIL}">{EMAIL}</a></li></ul>
       </div>
     </div>
     <div class="ftr__big" aria-hidden="true">Since {FOUNDED}</div>
@@ -332,6 +334,7 @@ def footer(page, with_cta=True):
 {quickbar()}
 <div class="mbar" aria-label="Quick contact">
   <a href="tel:{PHONES[0][1]}">{ICON['phone']} Call</a>
+  <a class="mbar__wa" href="https://wa.me/{MOBILE[1].lstrip("+")}" target="_blank" rel="noopener" aria-label="WhatsApp {MOBILE[0]}">{SOCIAL_ICON['whatsapp']} WhatsApp</a>
   <a href="{rel(page, 'contact-us/')}#enquiry">Get a quote</a>
 </div>
 <div class="toast" role="status" aria-live="polite"><span></span><a href="#" hidden>View list</a></div>
@@ -419,7 +422,7 @@ def side_card(page, name, pid, ask):
     return f"""<aside class="side-card on-dark" data-reveal>
   <span class="label" style="color:#7fc8bd">Enquire about this range</span>
   <h2 class="h3">Ask for availability &amp; price</h2>
-  <p>Add this product to your enquiry list, or contact us directly. Trade, tender and individual buyers are all welcome.</p>
+  <p>Add this product to your enquiry list, or contact us directly. We sell wholesale and retail, so trade, tender and individual buyers are all welcome.</p>
   {add_btn(page, pid, name, lg=True).replace('class="add-btn add-btn--lg"', 'class="add-btn add-btn--lg" style="width:100%;justify-content:center;color:var(--paper)"')}
   <a class="btn btn--buoy" href="{rel(page, 'contact-us/')}?product={e(name)}#enquiry">Request a quote {ICON['arrow']}</a>
   <a class="btn btn--ghost" href="tel:{PHONES[0][1]}">{ICON['phone']} {PHONES[0][0]}</a>
@@ -450,7 +453,7 @@ def schema_org():
         "@context": "https://schema.org", "@type": "Store", "name": NAME, "url": SITE,
         "logo": SITE + "assets/img/logo.png", "image": SITE + "assets/img/banner.jpg",
         "foundingDate": str(FOUNDED), "email": EMAIL,
-        "telephone": [p[0] for p in PHONES], "faxNumber": FAX,
+        "telephone": [p[0] for p in PHONES] + [MOBILE[0]],
         "address": {"@type": "PostalAddress", "streetAddress": ADDRESS[0], "addressLocality": "Colombo 11", "addressCountry": "LK"},
         "openingHours": ["Mo-Fr 09:00-17:00", "Sa 09:00-13:00"],
         "description": "Manufacturers, importers and distributors of nylon and cotton fishing nets, twines, lines and fishing accessories in Sri Lanka since 1953.",
@@ -492,7 +495,7 @@ def page_home():
         <a class="btn" href="{rel(p, 'products/')}">Explore the range {ICON['arrow']}</a>
         <a class="btn btn--ghost" href="{rel(p, 'contact-us/')}#enquiry">Request a quote</a>
       </div>
-      <p class="hero__si" lang="si" data-reveal style="--d:.8s">{NAME_SI}</p>
+      <p class="hero__si" data-reveal style="--d:.8s"><span lang="si">{NAME_SI}</span> · <span lang="ta" class="ta">{NAME_TA}</span></p>
     </div>
     <div class="hero__visual" data-reveal="scale" style="--d:.3s">
       {img(p, 'ropes-cut.webp', 'Coils of SuperCatch fishing rope in blue, green, red, yellow and white', 'hero__ropes', loading='eager', w=938, h=402, extra=' fetchpriority="high"')}
@@ -532,7 +535,7 @@ def page_home():
   <div class="wrap">
     <div class="sec-head">
       <div><span class="eyebrow label" data-reveal>The range</span><h2 class="h2" data-split>Everything a <em>fishing boat</em> needs, from net to hook.</h2></div>
-      <p class="lede" data-reveal>Seven product families, supplied to wholesale buyers, government tenders and individual fishermen alike.</p>
+      <p class="lede" data-reveal>Seven product families, sold wholesale and retail — to trade buyers, government tenders and individual fishermen alike.</p>
     </div>
     <div class="explorer">
       <ul class="explorer__list">{explorer_items}</ul>
@@ -568,6 +571,7 @@ def page_home():
         <ul class="path__list">
           <li>Nets, lines and ropes in many sizes and colours</li>
           <li>Hooks, swivels, lures, floats, reels and rods</li>
+          <li>Wholesale and retail — buy one item or a full order</li>
           <li>Open Monday to Saturday in Colombo 11</li>
         </ul>
         <div class="path__foot">
@@ -625,7 +629,7 @@ def page_home():
       <p class="lede" data-reveal>Send us the product, size and quantity. We reply during business hours, Monday to Saturday.</p>
       <div class="quote__contacts" data-reveal>
         <a href="tel:{PHONES[0][1]}"><span class="label">Call</span><span>{PHONES[0][0]}</span></a>
-        <a href="tel:{PHONES[1][1]}"><span class="label">Office</span><span>{PHONES[1][0]}</span></a>
+        <a href="https://wa.me/{MOBILE[1].lstrip("+")}" target="_blank" rel="noopener"><span class="label">WhatsApp</span><span>{MOBILE[0]}</span></a>
         <a href="mailto:{EMAIL}"><span class="label">Email</span><span>{EMAIL}</span></a>
       </div>
     </div>
@@ -856,7 +860,7 @@ def page_about():
     <h1 class="display about-hero__title" data-split style="margin-top:24px">Seven decades <br>on <em>Sea Street.</em></h1>
     <div class="about-hero__row">
       <p class="lede" data-reveal>Manufacturers, importers and distributors of all kinds of nylon and cotton fishing nets, twines, lines and fishing accessories — and the pioneers of imported fishing nets in Sri Lanka since {FOUNDED}.</p>
-      <p class="about-hero__si" lang="si" data-reveal style="--d:.15s">{NAME_SI}</p>
+      <p class="about-hero__si" data-reveal style="--d:.15s"><span lang="si">{NAME_SI}</span><br><span lang="ta" class="ta">{NAME_TA}</span></p>
     </div>
   </div>
   <figure class="banner-band" style="margin:0" data-reveal="fade">
@@ -919,7 +923,7 @@ def page_contact():
     phones = "".join(f'<a href="tel:{t}">{d}<small>{l}</small></a>' for d, t, l in PHONES)
     hours = "".join(f'<div{" class=closed" if h == "Closed" else ""}><span>{d}</span><span>{h}</span></div>' for d, h in HOURS)
     mapq = MAP_Q.replace(" ", "+").replace(",", "%2C")
-    body = f"""{head(p, 'Contact us & request a quote', f'Call {PHONES[0][0]} or {PHONES[1][0]}, email {EMAIL}, or visit us at 287/1 Sea Street, Colombo 11. Request availability and quotations for fishing nets, ropes, lines and accessories.')}
+    body = f"""{head(p, 'Contact us & request a quote', f'Call {PHONES[0][0]}, WhatsApp {MOBILE[0]}, email {EMAIL}, or visit us at 287/1 Sea Street, Colombo 11. Request availability and quotations for fishing nets, ropes, lines and accessories.')}
 {header(p)}
 <section class="phero">
   <div class="mesh-bg mesh-bg--ink"></div>
@@ -935,7 +939,8 @@ def page_contact():
       {enquiry_form(p)}
     </div>
     <div class="contact-grid__info" data-reveal style="--d:.1s">
-      <div class="info-block"><span class="label">Call</span>{phones}<p style="font-size:14px;color:var(--muted);margin:8px 0 0">Fax: {FAX}</p></div>
+      <div class="info-block"><span class="label">Call</span>{phones}<a href="tel:{MOBILE[1]}">{MOBILE[0]}<small>Mobile</small></a></div>
+      <div class="info-block"><span class="label">WhatsApp</span><a href="https://wa.me/{MOBILE[1].lstrip("+")}" target="_blank" rel="noopener">{MOBILE[0]}</a></div>
       <div class="info-block"><span class="label">Email</span><a href="mailto:{EMAIL}">{EMAIL}</a></div>
       <div class="info-block"><span class="label">Visit</span><address style="font-style:normal;font-size:20px;line-height:1.5">{'<br>'.join(ADDRESS)}</address>
         <a class="link-arrow" style="font-size:15px;margin-top:10px;display:inline-flex" href="https://www.google.com/maps/search/?api=1&amp;query={mapq}" target="_blank" rel="noopener">Open in Google Maps {ICON['arrow']}</a></div>

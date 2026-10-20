@@ -6,7 +6,7 @@
   doc.classList.add("js");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var canHover = window.matchMedia("(hover: hover)").matches;
-  var CONTACT = { email: "hello@jpfernandoandsons.com", phone: "+94 76 707 9587" };
+  var CONTACT = { email: "jpfernandoandsons287@gmail.com", phone: "+94 11 243 5634" };
 
   function $(s, root) { return (root || document).querySelector(s); }
   function $$(s, root) { return Array.prototype.slice.call((root || document).querySelectorAll(s)); }

@@ -27,6 +27,7 @@
   --f-display: "Instrument Serif", "Times New Roman", serif;
   --f-sans: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-si: "Noto Sans Sinhala", var(--f-sans);
+  --f-ta: "Noto Sans Tamil", var(--f-sans);
 
   --gutter: clamp(16px, 4vw, 56px);
   --max: 1360px;
@@ -644,6 +645,8 @@ main { display: block; }
 .ftr a { transition: color 0.3s; }
 .ftr a:hover { color: var(--buoy); }
 .ftr__si { font-family: var(--f-si); color: var(--paper); font-size: 18px; margin-top: 18px; }
+.ftr__ta { margin-top: 4px; font-size: 16px; }
+[lang="ta"], .ta { font-family: var(--f-ta); }
 .ftr__big { font-family: var(--f-display); color: rgba(244, 239, 230, 0.07); font-size: clamp(60px, 15.5vw, 240px); line-height: 0.8; letter-spacing: -0.04em; white-space: nowrap; padding: 30px 0 10px; user-select: none; overflow: hidden; }
 .ftr__bot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; padding-top: 18px; border-top: 1px solid var(--line-dark); }
 
@@ -764,10 +767,11 @@ main { display: block; }
   .era__knot { left: 18px; top: 58px; }
   .era:nth-child(even) .era__when { order: 0; }
   .era:nth-child(odd) .era__when { text-align: left; }
-  .mbar { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 80; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px; background: rgba(11, 26, 43, 0.94); border-radius: 999px; backdrop-filter: blur(10px); transform: translateY(140%); transition: transform 0.5s var(--ease-out); }
+  .mbar { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 80; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; padding: 8px; background: rgba(11, 26, 43, 0.94); border-radius: 999px; backdrop-filter: blur(10px); transform: translateY(140%); transition: transform 0.5s var(--ease-out); }
   .mbar.show { transform: none; }
   .mbar a { display: flex; align-items: center; justify-content: center; gap: 8px; height: 46px; border-radius: 999px; color: var(--paper); font-weight: 600; font-size: 14.5px; }
   .mbar a:last-child { background: var(--buoy); }
+  .mbar a.mbar__wa { background: #25d366; color: #fff; }
   .mbar svg { width: 16px; height: 16px; }
   .toast { bottom: 84px; }
   .ftr { padding-bottom: 96px; }

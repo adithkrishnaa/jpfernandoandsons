@@ -1,32 +1,33 @@
 """Site content. Every fact here comes from the original jpfernandoandsons.com
-pages or the company's own banner artwork. Do not add claims that cannot be
-traced back to the company."""
+pages, the company's own banner artwork or its business card. Do not add
+claims that cannot be traced back to the company."""
 
 SITE = "https://www.jpfernandoandsons.com/"
 NAME = "J.P. Fernando & Sons"
 NAME_SI = "ජේ. පී. ප්‍රනාන්දු සහ පුත්‍රයෝ"
+NAME_TA = "J. P. பெர்னாண்டோ அன் சன்ஸ்"   # as printed on the business card
 FOUNDED = 1953
-EMAIL = "hello@jpfernandoandsons.com"
-ADDRESS = ["287/1 Sea Street", "Colombo 11", "Sri Lanka"]
+EMAIL = "jpfernandoandsons287@gmail.com"
+ADDRESS = ["No. 287/1, Sea Street", "Colombo 11", "Sri Lanka"]
 PHONES = [
-    # (display, tel, label)
-    ("+94 76 707 9587", "+94767079587", "Mobile"),
+    # (display, tel, label) — contact details from the business card
     ("+94 11 243 5634", "+94112435634", "Office"),
-    ("+94 11 471 4350", "+94114714350", "Office"),
+    ("+94 11 243 5636", "+94112435636", "Office"),
+    ("+94 11 247 3342", "+94112473342", "Office"),
 ]
-FAX = "+94 11 224 5163"
+MOBILE = ("+94 76 239 2263", "+94762392263")   # mobile and WhatsApp
 HOURS = [("Monday – Friday", "9:00 – 17:00"), ("Saturday", "9:00 – 13:00"), ("Sunday", "Closed")]
 MAP_Q = "287/1 Sea Street, Colombo 11, Sri Lanka"
 
 # Social media profiles for the floating quick-access bar, menu and footer.
 # Paste the full profile URL to show an icon; leave "" to hide it.
-# whatsapp takes the number in international format, digits only, e.g. "94767079587".
+# whatsapp takes the number in international format, digits only, e.g. "94762392263".
 SOCIAL = {
     "facebook": "",
     "instagram": "",
     "linkedin": "",
     "x": "",
-    "whatsapp": "",
+    "whatsapp": "94762392263",
 }
 
 # Enquiry form delivery. Fill in ONE of these, then run: python src/build.py
