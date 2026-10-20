@@ -244,7 +244,7 @@
       ctx.beginPath(); ctx.moveTo(0, 26); ctx.lineTo(W, 26); ctx.stroke();
       for (var c = 1; c < cols; c += 3) {
         var n = nodes[c];
-        ctx.fillStyle = "#e4572e";
+        ctx.fillStyle = "#d29f08";
         ctx.beginPath(); ctx.ellipse(n.x, 26, 12, 8, 0, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = "rgba(255,255,255,.35)";
         ctx.beginPath(); ctx.ellipse(n.x - 4, 23, 4, 2.2, 0, 0, Math.PI * 2); ctx.fill();
