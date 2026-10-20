@@ -7,7 +7,7 @@ NAME = "J.P. Fernando & Sons"
 NAME_SI = "ජේ. පී. ප්‍රනාන්දු සහ පුත්‍රයෝ"
 NAME_TA = "J. P. பெர்னாண்டோ அன் சன்ஸ்"   # as printed on the business card
 FOUNDED = 1953
-EMAIL = "jpfernandoandsons287@gmail.com"
+EMAIL = "dinesh@jpfernando.com"
 ADDRESS = ["No. 287/1, Sea Street", "Colombo 11", "Sri Lanka"]
 PHONES = [
     # (display, tel, label) — contact details from the business card
