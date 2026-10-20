@@ -176,7 +176,8 @@ def head(page, title, desc, og_img="banner.jpg", schema=None):
 <meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{SITE}assets/img/{og_img}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="{rel(page, 'assets/img/logo.png')}" type="image/png">
+<link rel="icon" href="{rel(page, 'assets/img/favicon.png')}" type="image/png">
+<link rel="apple-touch-icon" href="{rel(page, 'assets/img/apple-touch-icon.png')}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Instrument+Serif:ital@0;1&family=Noto+Sans+Sinhala:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&display=swap">
@@ -204,7 +205,7 @@ def header(page, dark=False):
 <header class="hdr{' hdr--dark' if dark else ''}">
   <div class="wrap hdr__in">
     <a class="brand" href="{rel(page, '')}" aria-label="{e(NAME)} — home">
-      {img(page, 'logo.png', '', loading='eager', w=121, h=97)}
+      {img(page, 'logo.webp', '', loading='eager')}
       <span class="brand__name">J.P. Fernando <em>&amp;</em> Sons<small>Colombo · Since 1953</small></span>
     </a>
     <nav class="nav" aria-label="Main">
@@ -297,7 +298,7 @@ def footer(page, with_cta=True):
   <div class="wrap">
     <div class="ftr__top">
       <div>
-        <a class="brand" href="{rel(page, '')}">{img(page, 'logo.png', '', w=121, h=97)}<span class="brand__name">J.P. Fernando <em>&amp;</em> Sons</span></a>
+        <a class="brand" href="{rel(page, '')}">{img(page, 'logo.webp', '')}<span class="brand__name">J.P. Fernando <em>&amp;</em> Sons</span></a>
         <p>Manufacturers, importers and distributors of nylon and cotton fishing nets, twines, lines and fishing accessories. Colombo, since {FOUNDED}.</p>
         <p class="ftr__si" lang="si">{NAME_SI}</p>
         <p class="ftr__si ftr__ta" lang="ta">{NAME_TA}</p>
@@ -513,7 +514,7 @@ def page_home():
         <div class="heritage__big" aria-hidden="true">1953</div>
         <div class="heritage__seal">
           <svg class="heritage__seal-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring" d="M100 100m-86 0a86 86 0 1 1 172 0a86 86 0 1 1-172 0"/></defs><text><textPath href="#ring">Pioneers in fishing nets · Colombo · Since 1953 ·</textPath></text></svg>
-          {img(p, 'logo.png', 'J.P. Fernando & Sons seal, since 1953', w=121, h=97)}
+          {img(p, 'logo.webp', 'J.P. Fernando & Sons seal, since 1953')}
         </div>
       </div>
       <div class="heritage__copy">
