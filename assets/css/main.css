@@ -8,9 +8,9 @@
   --ink: #0b1a2b;
   --ink-2: #132a42;
   --ink-3: #1d3a57;
-  --paper: #f4efe6;
-  --paper-2: #ebe3d4;
-  --paper-3: #e0d5c1;
+  --paper: #e6f3f5;
+  --paper-2: #d5eaee;
+  --paper-3: #c2dfe4;
   --net: #0f5b57;
   --net-2: #2c8a80;
   --buoy: #e4572e;
@@ -127,7 +127,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   position: fixed; inset: 0 0 auto 0; z-index: 100; height: var(--header-h);
   transition: transform 0.5s var(--ease), background-color 0.4s, box-shadow 0.4s, color 0.4s;
 }
-.hdr.is-solid { background: rgba(244, 239, 230, 0.92); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2); box-shadow: 0 1px 0 var(--line); }
+.hdr.is-solid { background: rgba(230, 243, 245, 0.92); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2); box-shadow: 0 1px 0 var(--line); }
 .hdr.is-hidden { transform: translateY(-100%); }
 .hdr--dark:not(.is-solid) { color: var(--paper); }
 .hdr__in { height: 100%; display: flex; align-items: center; gap: 28px; }
