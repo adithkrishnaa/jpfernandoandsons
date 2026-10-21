@@ -7,6 +7,7 @@ Pages keep the original WordPress URLs (e.g. /ropes/pp/).
 """
 import html
 import json
+import urllib.parse
 import os
 import sys
 from datetime import date
@@ -271,11 +272,10 @@ def cta_band(page, title="Tell us what <em>you need.</em>", text="Send us the pr
 
 def quickbar():
     """Floating quick-access bar on the left edge (desktop and tablet)."""
-    mapq = MAP_Q.replace(" ", "+").replace(",", "%2C")
     items = [
         ("call", "Call " + PHONES[0][0], f"tel:{PHONES[0][1]}", ICON["phone"], False),
         ("mail", "Email us", f"mailto:{EMAIL}", ICON["mail"], False),
-        ("map", "Find us on the map", f"https://www.google.com/maps/search/?api=1&amp;query={mapq}", ICON["pin"], True),
+        ("map", "Find us on the map", MAP_URL, ICON["pin"], True),
     ]
     links = "".join(
         f'<li><a class="qa qa--{k}" href="{h}"{' target="_blank" rel="noopener"' if ext else ''} aria-label="{e(l)}">'
@@ -923,7 +923,7 @@ def page_contact():
     p = "contact-us/"
     phones = "".join(f'<a href="tel:{t}">{d}<small>{l}</small></a>' for d, t, l in PHONES)
     hours = "".join(f'<div{" class=closed" if h == "Closed" else ""}><span>{d}</span><span>{h}</span></div>' for d, h in HOURS)
-    mapq = MAP_Q.replace(" ", "+").replace(",", "%2C")
+    mapq = urllib.parse.quote_plus(MAP_Q, safe="/,")
     body = f"""{head(p, 'Contact us & request a quote', f'Call {PHONES[0][0]}, WhatsApp {MOBILE[0]}, email {EMAIL}, or visit us at 287/1 Sea Street, Colombo 11. Request availability and quotations for fishing nets, ropes, lines and accessories.')}
 {header(p)}
 <section class="phero">
@@ -944,7 +944,7 @@ def page_contact():
       <div class="info-block"><span class="label">WhatsApp</span><a href="https://wa.me/{MOBILE[1].lstrip("+")}" target="_blank" rel="noopener">{MOBILE[0]}</a></div>
       <div class="info-block"><span class="label">Email</span><a href="mailto:{EMAIL}">{EMAIL}</a></div>
       <div class="info-block"><span class="label">Visit</span><address style="font-style:normal;font-size:20px;line-height:1.5">{'<br>'.join(ADDRESS)}</address>
-        <a class="link-arrow" style="font-size:15px;margin-top:10px;display:inline-flex" href="https://www.google.com/maps/search/?api=1&amp;query={mapq}" target="_blank" rel="noopener">Open in Google Maps {ICON['arrow']}</a></div>
+        <a class="link-arrow" style="font-size:15px;margin-top:10px;display:inline-flex" href="{MAP_URL}" target="_blank" rel="noopener">Open in Google Maps {ICON['arrow']}</a></div>
       <div class="info-block"><span class="label">Opening hours</span><div class="hours">{hours}</div><span class="open-now"></span></div>
     </div>
   </div>
@@ -952,7 +952,7 @@ def page_contact():
 <section class="sec sec--tight" style="padding-top:0">
   <div class="wrap">
     <div class="map" data-reveal>
-      <iframe title="Map showing 287/1 Sea Street, Colombo 11" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q={mapq}&amp;z=16&amp;output=embed"></iframe>
+      <iframe title="Map showing 287/1 Sea Street, Colombo 11" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m3!2m1!1s{mapq}!6i16"></iframe>
       <div class="map__pin">{tag([("Find us", "287/1 Sea Street"), ("City", "Colombo 11, Sri Lanka")], dark=True)}</div>
     </div>
   </div>

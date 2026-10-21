@@ -17,7 +17,8 @@ PHONES = [
 ]
 MOBILE = ("+94 76 239 2263", "+94762392263")   # mobile and WhatsApp
 HOURS = [("Monday – Friday", "9:00 – 17:00"), ("Saturday", "9:00 – 13:00"), ("Sunday", "Closed")]
-MAP_Q = "287/1 Sea Street, Colombo 11, Sri Lanka"
+MAP_URL = "https://maps.app.goo.gl/jWRP3BWpwNeFLu2g7"   # the company's Google Maps listing
+MAP_Q = "J.P Fernando & Sons, 287/1 Sea St, Colombo 01100, Sri Lanka"   # name of that listing, used for the embedded map
 
 # Social media profiles for the floating quick-access bar, menu and footer.
 # Paste the full profile URL to show an icon; leave "" to hide it.
