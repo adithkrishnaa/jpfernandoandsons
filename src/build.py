@@ -291,7 +291,7 @@ def quickbar():
 def footer(page, with_cta=True):
     cats = "".join(f'<li><a href="{rel(page, c["slug"])}">{e(c["name"])}</a></li>' for c in CATEGORIES)
     phones = "".join(f'<li><a href="tel:{t}">{d}</a> <span style="opacity:.6">· {l}</span></li>' for d, t, l in PHONES)
-    hours = "".join(f"<li>{d}: {h}</li>" for d, h in HOURS)
+    hours = "".join(f"<li>{e(d)}: {e(h)}</li>" for d, h in HOURS)
     return f"""{cta_band(page) if with_cta else ''}
 </main>
 <footer class="ftr">
@@ -922,7 +922,7 @@ def page_about():
 def page_contact():
     p = "contact-us/"
     phones = "".join(f'<a href="tel:{t}">{d}<small>{l}</small></a>' for d, t, l in PHONES)
-    hours = "".join(f'<div{" class=closed" if h == "Closed" else ""}><span>{d}</span><span>{h}</span></div>' for d, h in HOURS)
+    hours = "".join(f'<div{" class=closed" if h == "Closed" else ""}><span>{e(d)}</span><span>{e(h)}</span></div>' for d, h in HOURS)
     mapq = urllib.parse.quote_plus(MAP_Q, safe="/,")
     body = f"""{head(p, 'Contact us & request a quote', f'Call {PHONES[0][0]}, WhatsApp {MOBILE[0]}, email {EMAIL}, or visit us at 287/1 Sea Street, Colombo 11. Request availability and quotations for fishing nets, ropes, lines and accessories.')}
 {header(p)}

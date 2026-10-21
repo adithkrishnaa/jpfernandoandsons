@@ -16,7 +16,7 @@ PHONES = [
     ("+94 11 247 3342", "+94112473342", "Office"),
 ]
 MOBILE = ("+94 76 239 2263", "+94762392263")   # mobile and WhatsApp
-HOURS = [("Monday – Friday", "9:00 – 17:00"), ("Saturday", "9:00 – 13:00"), ("Sunday", "Closed")]
+HOURS = [("Monday – Friday", "9:00 – 17:00"), ("Saturday", "9:00 – 13:00"), ("Sunday & full moon (Poya) days", "Closed")]
 MAP_URL = "https://maps.app.goo.gl/jWRP3BWpwNeFLu2g7"   # the company's Google Maps listing
 MAP_Q = "J.P Fernando & Sons, 287/1 Sea St, Colombo 01100, Sri Lanka"   # name of that listing, used for the embedded map
 

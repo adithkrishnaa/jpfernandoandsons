@@ -396,7 +396,7 @@
     var d = col.getDay(), m = col.getHours() * 60 + col.getMinutes();
     var open = (d >= 1 && d <= 5 && m >= 540 && m < 1020) || (d === 6 && m >= 540 && m < 780);
     el.classList.toggle("is-open", open);
-    el.textContent = open ? "Open now in Colombo" : "Closed now — enquiries answered next working day";
+    el.textContent = open ? "Open now in Colombo (closed on full moon Poya days)" : "Closed now — enquiries answered next working day";
   });
 
   /* ==========================================================
