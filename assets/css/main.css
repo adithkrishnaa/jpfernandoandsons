@@ -435,6 +435,24 @@ main { display: block; }
 .form__status { grid-column: 1 / -1; font-size: 14.5px; padding: 14px 16px; border-radius: 6px; background: rgba(15, 91, 87, 0.1); display: none; }
 .form__status.show { display: block; }
 .on-dark .form__status { background: rgba(244, 239, 230, 0.08); }
+.form__status.is-error { background: rgba(192, 57, 43, 0.08); border-left: 4px solid #c0392b; color: var(--ink); }
+.on-dark .form__status.is-error { background: rgba(192, 57, 43, 0.18); color: var(--paper); }
+.form[hidden], .form-done[hidden] { display: none; }
+.btn.is-busy { opacity: 0.75; cursor: progress; }
+
+/* confirmation panel shown after a successful send */
+.form-done { border-radius: 10px; padding: clamp(28px, 4vw, 44px); background: #fff; box-shadow: inset 0 0 0 1px var(--line), 0 24px 50px -30px rgba(11, 26, 43, 0.35); animation: doneIn 0.6s var(--ease-out); }
+.form-done:focus { outline: none; }
+.form-done.on-dark { background: rgba(244, 239, 230, 0.06); box-shadow: inset 0 0 0 1px var(--line-dark); color: var(--paper); }
+.form-done__tick { width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: #2fae6b; color: #fff; margin-bottom: 20px; box-shadow: 0 0 0 8px rgba(47, 174, 107, 0.15); }
+.form-done__tick svg { width: 30px; height: 30px; stroke-dasharray: 24; stroke-dashoffset: 24; animation: tickDraw 0.5s 0.25s var(--ease-out) forwards; }
+.form-done__t { font-family: var(--f-display); font-size: clamp(30px, 3vw, 42px); line-height: 1.05; margin-bottom: 12px; }
+.form-done p { color: var(--muted); max-width: 36em; }
+.form-done.on-dark p { color: var(--on-dark-muted); }
+.form-done p a { text-decoration: underline; font-weight: 600; color: inherit; }
+@keyframes doneIn { from { opacity: 0; transform: translateY(14px) scale(0.98); } }
+@keyframes tickDraw { to { stroke-dashoffset: 0; } }
+
 .form__list { grid-column: 1 / -1; display: none; border: 1px dashed var(--line-strong); border-radius: 6px; padding: 14px 16px; }
 .form__list.show { display: block; }
 .form__list ul { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }

@@ -493,7 +493,12 @@
         }
         if (fd.get("email")) { fd.set("replyto", fd.get("email")); fd.set("_replyto", fd.get("email")); }
         var btn = form.querySelector("[type=submit]");
+        var btnHTML = btn.innerHTML;
         btn.disabled = true;
+        btn.classList.add("is-busy");
+        btn.textContent = "Sending…";
+        if (status) status.classList.remove("show");
+        var sentName = fd.get("name");
         fetch(endpoint, { method: "POST", body: fd, headers: { Accept: "application/json" } })
           .then(function (r) {
             return r.json().catch(function () { return {}; }).then(function (data) {
@@ -502,11 +507,11 @@
             });
           })
           .then(function () {
-            setStatus("Thank you — your enquiry has been sent. We reply during business hours (Mon–Fri 9:00–17:00, Sat 9:00–13:00).");
             form.reset(); list = []; saveList();
+            showDone(sentName);
           })
-          .catch(function () { setStatus("Sorry, the enquiry could not be sent. Please email " + CONTACT.email + " or call " + CONTACT.phone + "."); })
-          .then(function () { btn.disabled = false; });
+          .catch(function () { setStatus("Sorry, your enquiry could not be sent. Please try again, email " + CONTACT.email + " or call " + CONTACT.phone + ".", null, true); })
+          .then(function () { btn.disabled = false; btn.classList.remove("is-busy"); btn.innerHTML = btnHTML; });
         return;
       }
 
@@ -516,8 +521,36 @@
       setStatus("Your email app should now open with this enquiry written out — just press send. If nothing opened, copy the text below and email it to " + CONTACT.email + ", or call " + CONTACT.phone + ".", body);
     });
 
-    function setStatus(msg, copyText) {
+    // Replace the form with a clear confirmation panel after a successful send
+    function showDone(name) {
+      var done = form.nextElementSibling && form.nextElementSibling.classList.contains("form-done") ? form.nextElementSibling : null;
+      if (!done) {
+        done = document.createElement("div");
+        done.className = "form-done" + (form.classList.contains("on-dark") ? " on-dark" : "");
+        done.setAttribute("role", "status");
+        done.setAttribute("tabindex", "-1");
+        form.parentNode.insertBefore(done, form.nextSibling);
+      }
+      done.innerHTML =
+        '<span class="form-done__tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>' +
+        '<h3 class="form-done__t">Enquiry sent' + (name ? ", thank you " + escapeHTML(String(name).split(" ")[0]) : "") + '!</h3>' +
+        '<p>We have received your enquiry and will reply during business hours (Mon–Fri 9:00–17:00, Sat 9:00–13:00). For anything urgent, call <a href="tel:' + CONTACT.phone.replace(/\s/g, "") + '">' + CONTACT.phone + '</a>.</p>' +
+        '<button type="button" class="link-arrow form-done__again">Send another enquiry</button>';
+      form.hidden = true;
+      done.hidden = false;
+      done.querySelector(".form-done__again").addEventListener("click", function () {
+        done.hidden = true; form.hidden = false;
+        var first = form.querySelector("input:not([type=radio]):not([name=botcheck])");
+        if (first) first.focus();
+      });
+      done.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+      done.focus({ preventScroll: true });
+    }
+    function escapeHTML(s) { return s.replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+
+    function setStatus(msg, copyText, isError) {
       if (!status) return;
+      status.classList.toggle("is-error", !!isError);
       status.innerHTML = "";
       var p = document.createElement("p"); p.style.margin = "0"; p.textContent = msg; status.appendChild(p);
       if (copyText) {
@@ -532,7 +565,8 @@
       }
       status.classList.add("show");
       status.setAttribute("tabindex", "-1");
-      status.focus({ preventScroll: false });
+      status.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+      status.focus({ preventScroll: true });
     }
   });
 })();

@@ -77,6 +77,13 @@ def social_row(cls=""):
 e = html.escape
 
 
+def asset_version(path):
+    """Short hash of a CSS/JS file, added to its URL so browsers fetch the new file after each change."""
+    import hashlib
+    with open(os.path.join(ROOT, path), "rb") as f:
+        return hashlib.md5(f.read()).hexdigest()[:8]
+
+
 def rel(page, target):
     """Relative URL from page path (e.g. 'ropes/pp/') to target path."""
     depth = len([p for p in page.split("/") if p])
@@ -182,7 +189,7 @@ def head(page, title, desc, og_img="banner.jpg", schema=None):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Instrument+Serif:ital@0;1&family=Noto+Sans+Sinhala:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&display=swap">
-<link rel="stylesheet" href="{rel(page, 'assets/css/main.css')}">
+<link rel="stylesheet" href="{rel(page, 'assets/css/main.css')}?v={asset_version('assets/css/main.css')}">
 {ld}
 </head>
 """
@@ -339,7 +346,7 @@ def footer(page, with_cta=True):
   <a href="{rel(page, 'contact-us/')}#enquiry">Get a quote</a>
 </div>
 <div class="toast" role="status" aria-live="polite"><span></span><a href="#" hidden>View list</a></div>
-<script src="{rel(page, 'assets/js/main.js')}" defer></script>
+<script src="{rel(page, 'assets/js/main.js')}?v={asset_version('assets/js/main.js')}" defer></script>
 </body>
 </html>
 """
