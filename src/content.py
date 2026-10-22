@@ -36,7 +36,7 @@ SOCIAL = {
 #   Formspree: paste your form URL, e.g. "https://formspree.io/f/abcdwxyz"
 # Leave both empty and the form falls back to opening the visitor's email app.
 FORM_ACCESS_KEY = ""   # Web3Forms access key
-FORM_ENDPOINT = ""     # Formspree (or any other service) form URL
+FORM_ENDPOINT = "https://formsubmit.co/ajax/sak162000@gmail.com"   # TESTING — switch to dinesh@jpfernando.com before going live
 
 # ---------------------------------------------------------------------------
 # Product categories (top level) and their product pages (children)

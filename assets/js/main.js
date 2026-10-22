@@ -487,14 +487,18 @@
         if (key) fd.set("access_key", key); // Web3Forms
         fd.set("subject", "Website enquiry from " + (fd.get("name") || "visitor") + (fd.get("interest") ? " — " + fd.get("interest") : ""));
         fd.set("from_name", "jpfernandoandsons.com");
+        if (/formsubmit\.co/.test(endpoint)) {
+          fd.set("_subject", fd.get("subject")); // FormSubmit's subject field
+          fd.set("_template", "table");          // tidy table layout in the email
+        }
         if (fd.get("email")) { fd.set("replyto", fd.get("email")); fd.set("_replyto", fd.get("email")); }
         var btn = form.querySelector("[type=submit]");
         btn.disabled = true;
         fetch(endpoint, { method: "POST", body: fd, headers: { Accept: "application/json" } })
           .then(function (r) {
             return r.json().catch(function () { return {}; }).then(function (data) {
-              // Web3Forms reports failures as success:false in the body
-              if (!r.ok || data.success === false) throw new Error(data.message || r.status);
+              // Web3Forms reports failures as success:false, FormSubmit as success:"false"
+              if (!r.ok || data.success === false || data.success === "false") throw new Error(data.message || r.status);
             });
           })
           .then(function () {
