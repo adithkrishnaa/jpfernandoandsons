@@ -141,6 +141,10 @@ def tag(rows, brand=None, dark=False, cls=""):
     return "".join(out)
 
 
+def mail_links():
+    return "".join(f'<a href="mailto:{m}">{m}</a>' for m in EMAILS)
+
+
 def add_btn(page, pid, name, lg=False):
     return (f'<button type="button" class="add-btn{" add-btn--lg" if lg else ""}" data-id="{pid}" data-name="{e(name)}" '
             f'data-contact="{rel(page, "contact-us/")}#enquiry" aria-pressed="false">{ICON["plus"]}<span class="add-btn__t">Add to enquiry</span></button>')
@@ -253,7 +257,7 @@ def header(page, dark=False):
   <div class="drawer__foot">
     <a href="tel:{phone[1]}">{phone[0]}</a>
     <a href="https://wa.me/{MOBILE[1].lstrip("+")}" target="_blank" rel="noopener">WhatsApp {MOBILE[0]}</a>
-    <a href="mailto:{EMAIL}">{EMAIL}</a>
+    {mail_links()}
     <span>{', '.join(ADDRESS)}</span>
     {social_row("srow--drawer")}
   </div>
@@ -281,7 +285,7 @@ def quickbar():
     """Floating quick-access bar on the left edge (desktop and tablet)."""
     items = [
         ("call", "Call " + PHONES[0][0], f"tel:{PHONES[0][1]}", ICON["phone"], False),
-        ("mail", "Email us", f"mailto:{EMAIL}", ICON["mail"], False),
+        ("mail", "Email us", f"mailto:{','.join(EMAILS)}", ICON["mail"], False),
         ("map", "Find us on the map", MAP_URL, ICON["pin"], True),
     ]
     links = "".join(
@@ -330,7 +334,7 @@ def footer(page, with_cta=True):
       <div>
         <h3 class="label">Visit &amp; call</h3>
         <address style="font-style:normal">{'<br>'.join(ADDRESS)}</address>
-        <ul style="margin-top:14px">{phones}<li><a href="tel:{MOBILE[1]}">{MOBILE[0]}</a> <span style="opacity:.6">· Mobile</span></li><li><a href="https://wa.me/{MOBILE[1].lstrip("+")}" target="_blank" rel="noopener">WhatsApp {MOBILE[0]}</a></li><li><a href="mailto:{EMAIL}">{EMAIL}</a></li></ul>
+        <ul style="margin-top:14px">{phones}<li><a href="tel:{MOBILE[1]}">{MOBILE[0]}</a> <span style="opacity:.6">· Mobile</span></li><li><a href="https://wa.me/{MOBILE[1].lstrip("+")}" target="_blank" rel="noopener">WhatsApp {MOBILE[0]}</a></li>{"".join(f'<li><a href="mailto:{m}">{m}</a></li>' for m in EMAILS)}</ul>
       </div>
     </div>
     <div class="ftr__big" aria-hidden="true">Since {FOUNDED}</div>
@@ -366,8 +370,8 @@ def enquiry_form(page, compact=False, dark=False):
     sfx = "c" if compact else "f"
     endpoint = FORM_ENDPOINT or ("https://api.web3forms.com/submit" if FORM_ACCESS_KEY else "")
     note = ("We reply during business hours, Monday to Saturday." if endpoint
-            else f"Pressing send opens your email app with this enquiry ready to go to {EMAIL}.")
-    return f"""<form class="form{' on-dark' if dark else ''}" data-enquiry data-endpoint="{e(endpoint)}" data-access-key="{e(FORM_ACCESS_KEY)}" novalidate>
+            else f"Pressing send opens your email app with this enquiry ready to go to {' and '.join(EMAILS)}.")
+    return f"""<form class="form{' on-dark' if dark else ''}" data-enquiry data-endpoint="{e(endpoint)}" data-access-key="{e(FORM_ACCESS_KEY)}" data-cc="{e(FORM_CC)}" novalidate>
       <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Leave this empty<input name="botcheck" tabindex="-1" autocomplete="off"></label></div>
       <fieldset class="field field--full" style="border:0;padding:0;margin:0">
         <legend class="label" style="margin-bottom:12px">I am a</legend>
@@ -640,7 +644,7 @@ def page_home():
       <div class="quote__contacts" data-reveal>
         <a href="tel:{PHONES[0][1]}"><span class="label">Call</span><span>{PHONES[0][0]}</span></a>
         <a href="https://wa.me/{MOBILE[1].lstrip("+")}" target="_blank" rel="noopener"><span class="label">WhatsApp</span><span>{MOBILE[0]}</span></a>
-        <a href="mailto:{EMAIL}"><span class="label">Email</span><span>{EMAIL}</span></a>
+        <a href="mailto:{','.join(EMAILS)}"><span class="label">Email</span><span>{'<br>'.join(EMAILS)}</span></a>
       </div>
     </div>
     <div class="quote__form" data-reveal style="--d:.15s">{enquiry_form(p, compact=True, dark=True)}</div>
@@ -933,7 +937,7 @@ def page_contact():
     phones = "".join(f'<a href="tel:{t}">{d}<small>{l}</small></a>' for d, t, l in PHONES)
     hours = "".join(f'<div{" class=closed" if h == "Closed" else ""}><span>{e(d)}</span><span>{e(h)}</span></div>' for d, h in HOURS)
     mapq = urllib.parse.quote_plus(MAP_Q, safe="/,")
-    body = f"""{head(p, 'Contact us & request a quote', f'Call {PHONES[0][0]}, WhatsApp {MOBILE[0]}, email {EMAIL}, or visit us at 287/1 Sea Street, Colombo 11. Request availability and quotations for fishing nets, ropes, lines and accessories.')}
+    body = f"""{head(p, 'Contact us & request a quote', f'Call {PHONES[0][0]}, WhatsApp {MOBILE[0]}, email {' or '.join(EMAILS)}, or visit us at 287/1 Sea Street, Colombo 11. Request availability and quotations for fishing nets, ropes, lines and accessories.')}
 {header(p)}
 <section class="phero">
   <div class="mesh-bg mesh-bg--ink"></div>
@@ -951,7 +955,7 @@ def page_contact():
     <div class="contact-grid__info" data-reveal style="--d:.1s">
       <div class="info-block"><span class="label">Call</span>{phones}<a href="tel:{MOBILE[1]}">{MOBILE[0]}<small>Mobile</small></a></div>
       <div class="info-block"><span class="label">WhatsApp</span><a href="https://wa.me/{MOBILE[1].lstrip("+")}" target="_blank" rel="noopener">{MOBILE[0]}</a></div>
-      <div class="info-block"><span class="label">Email</span><a href="mailto:{EMAIL}">{EMAIL}</a></div>
+      <div class="info-block"><span class="label">Email</span>{mail_links()}</div>
       <div class="info-block"><span class="label">Visit</span><address style="font-style:normal;font-size:20px;line-height:1.5">{'<br>'.join(ADDRESS)}</address>
         <a class="link-arrow" style="font-size:15px;margin-top:10px;display:inline-flex" href="{MAP_URL}" target="_blank" rel="noopener">Open in Google Maps {ICON['arrow']}</a></div>
       <div class="info-block"><span class="label">Opening hours</span><div class="hours">{hours}</div><span class="open-now"></span></div>

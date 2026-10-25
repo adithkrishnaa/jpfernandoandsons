@@ -6,7 +6,7 @@
   doc.classList.add("js");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var canHover = window.matchMedia("(hover: hover)").matches;
-  var CONTACT = { email: "dinesh@jpfernando.com", phone: "+94 11 243 5634" };
+  var CONTACT = { emails: ["contact@jpfernando.com", "dinesh@jpfernando.com"], phone: "+94 11 243 5634" };
 
   function $(s, root) { return (root || document).querySelector(s); }
   function $$(s, root) { return Array.prototype.slice.call((root || document).querySelectorAll(s)); }
@@ -490,6 +490,7 @@
         if (/formsubmit\.co/.test(endpoint)) {
           fd.set("_subject", fd.get("subject")); // FormSubmit's subject field
           fd.set("_template", "table");          // tidy table layout in the email
+          if (form.getAttribute("data-cc")) fd.set("_cc", form.getAttribute("data-cc")); // copy to the second inbox
         }
         if (fd.get("email")) { fd.set("replyto", fd.get("email")); fd.set("_replyto", fd.get("email")); }
         var btn = form.querySelector("[type=submit]");
@@ -510,15 +511,15 @@
             form.reset(); list = []; saveList();
             showDone(sentName);
           })
-          .catch(function () { setStatus("Sorry, your enquiry could not be sent. Please try again, email " + CONTACT.email + " or call " + CONTACT.phone + ".", null, true); })
+          .catch(function () { setStatus("Sorry, your enquiry could not be sent. Please try again, email " + CONTACT.emails.join(" or ") + " or call " + CONTACT.phone + ".", null, true); })
           .then(function () { btn.disabled = false; btn.classList.remove("is-busy"); btn.innerHTML = btnHTML; });
         return;
       }
 
       var subject = "Enquiry from " + (fd.get("name") || "website") + (fd.get("interest") ? " — " + fd.get("interest") : "");
-      var href = "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body + "\n\n(Sent from jpfernandoandsons.com)");
+      var href = "mailto:" + CONTACT.emails.join(",") + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body + "\n\n(Sent from jpfernandoandsons.com)");
       window.location.href = href;
-      setStatus("Your email app should now open with this enquiry written out — just press send. If nothing opened, copy the text below and email it to " + CONTACT.email + ", or call " + CONTACT.phone + ".", body);
+      setStatus("Your email app should now open with this enquiry written out — just press send. If nothing opened, copy the text below and email it to " + CONTACT.emails.join(" or ") + ", or call " + CONTACT.phone + ".", body);
     });
 
     // Replace the form with a clear confirmation panel after a successful send

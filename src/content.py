@@ -7,7 +7,8 @@ NAME = "J.P. Fernando & Sons"
 NAME_SI = "ජේ. පී. ප්‍රනාන්දු සහ පුත්‍රයෝ"
 NAME_TA = "J. P. பெர்னாண்டோ அன் சன்ஸ்"   # as printed on the business card
 FOUNDED = 1953
-EMAIL = "dinesh@jpfernando.com"
+EMAILS = ["contact@jpfernando.com", "dinesh@jpfernando.com"]   # both shown on the site; enquiries go to both
+EMAIL = EMAILS[0]
 ADDRESS = ["No. 287/1, Sea Street", "Colombo 11", "Sri Lanka"]
 PHONES = [
     # (display, tel, label) — contact details from the business card
@@ -37,6 +38,7 @@ SOCIAL = {
 # Leave both empty and the form falls back to opening the visitor's email app.
 FORM_ACCESS_KEY = ""   # Web3Forms access key
 FORM_ENDPOINT = "https://formsubmit.co/ajax/dinesh@jpfernando.com"   # FormSubmit; activate once via the email FormSubmit sends
+FORM_CC = "contact@jpfernando.com"   # FormSubmit also copies each enquiry here (no activation needed)
 
 # ---------------------------------------------------------------------------
 # Product categories (top level) and their product pages (children)
@@ -48,8 +50,8 @@ CATEGORIES = [
         "name": "Nylon Fishing Nets",
         "title_html": "Nylon <em>fishing nets</em>",
         "group": "nets",
-        "img": "nylon-nets.jpg",
-        "fit": "cover",
+        "img": "prod-nylon-nets.jpg",
+        "fit": "contain",
         "blurb": "Our own SuperCatch nets, knitted locally from TORAY Japan yarn, alongside imported Japanese-technology nets.",
         "intro": "Fishing nets bring in the largest share of Asia's catch, and they are made in many configurations depending on the species being targeted.",
         "tag": [("Made in", "Sri Lanka, on Japanese machines"), ("Yarn", "TORAY Japan nylon")],
@@ -63,7 +65,7 @@ CATEGORIES = [
         ],
         "ask": ["Mesh size and twine thickness", "Net depth and length", "Colour", "Quantity required"],
         "children": ["super-catch", "nitto"],
-        "gallery": [("nylon-nets.jpg", "Nylon fishing nets"), ("supercatch-logo.jpg", "SuperCatch brand mark"), ("nitto-poster.jpg", "Nitto Japanese-technology fishing nets"), ("acc-cast-net.jpg", "Hand-thrown cast net")],
+        "gallery": [("prod-nylon-nets.jpg", "Nylon fishing nets in bundles"), ("nylon-nets.jpg", "Nylon fishing nets"), ("supercatch-logo.jpg", "SuperCatch brand mark"), ("nitto-poster.jpg", "Nitto Japanese-technology fishing nets"), ("acc-cast-net.jpg", "Hand-thrown cast net")],
     },
     {
         "slug": "hdpe-fishing-nets/",
@@ -90,8 +92,8 @@ CATEGORIES = [
         "name": "Fishing Lines",
         "title_html": "Monofilament <em>fishing lines</em>",
         "group": "lines",
-        "img": "monofilament.jpg",
-        "fit": "cover",
+        "img": "prod-fishing-lines.jpg",
+        "fit": "contain",
         "blurb": "Monofilament line in a range of diameters and colours — from clear to fluorescent.",
         "intro": "Most fishing lines today are monofilament: economical to produce and made in a wide range of diameters.",
         "tag": [("Type", "Monofilament"), ("Colours", "Clear to fluorescent")],
@@ -103,7 +105,7 @@ CATEGORIES = [
         ],
         "ask": ["Line diameter", "Colour", "Spool or hank size", "Quantity required"],
         "children": [],
-        "gallery": [("monofilament.jpg", "Monofilament line hanks"), ("acc-mono.jpg", "Packed monofilament line")],
+        "gallery": [("prod-fishing-lines.jpg", "Clear monofilament fishing line"), ("monofilament.jpg", "Monofilament line hanks"), ("acc-mono.jpg", "Packed monofilament line")],
     },
     {
         "slug": "ropes/",
@@ -149,8 +151,8 @@ CATEGORIES = [
         "name": "Fishing Accessories",
         "title_html": "Fishing <em>accessories</em>",
         "group": "tackle",
-        "img": "acc-floats.jpg",
-        "fit": "cover",
+        "img": "prod-fishing-accessories.jpg",
+        "fit": "contain",
         "blurb": "Floats, cast nets, reels, rods and diving gear — the everyday items that keep fishing going.",
         "intro": "Beyond nets and rope, we supply the everyday accessories that fishermen and anglers rely on.",
         "tag": [("Includes", "Floats · Reels · Rods"), ("Also", "Masks & fins")],
@@ -163,15 +165,15 @@ CATEGORIES = [
         ],
         "ask": ["Item you are looking for", "Size or model", "Quantity required"],
         "children": [],
-        "gallery": [("acc-floats.jpg", "Net floats"), ("acc-cast-net.jpg", "Cast net"), ("acc-reel.jpg", "Spinning reel"), ("acc-rods.jpg", "Fishing rods and reels"), ("acc-snorkel.jpg", "Mask, snorkel and fins"), ("acc-hook-swivel.jpg", "Hook and swivel")],
+        "gallery": [("prod-fishing-accessories.jpg", "Net floats in assorted colours"), ("acc-floats.jpg", "Net floats"), ("acc-cast-net.jpg", "Cast net"), ("acc-reel.jpg", "Spinning reel"), ("acc-rods.jpg", "Fishing rods and reels"), ("acc-snorkel.jpg", "Mask, snorkel and fins"), ("acc-hook-swivel.jpg", "Hook and swivel")],
     },
     {
         "slug": "nylon-yarn-twine/",
         "name": "Nylon Yarn & Twine",
         "title_html": "Nylon <em>yarn &amp; twine</em>",
         "group": "yarn",
-        "img": "toray-yarn.jpg",
-        "fit": "cover",
+        "img": "prod-toray-yarn.jpg",
+        "fit": "contain",
         "blurb": "TORAY Japan nylon yarn — we are the sole agent and single distributor for TORAY products in Sri Lanka.",
         "intro": "Nylon, the world's first synthetic fibre, was first produced on a large scale in Japan by Toray in 1951.",
         "tag": [("Brand", "TORAY Japan"), ("Status", "Sole agent in Sri Lanka")],
@@ -185,7 +187,7 @@ CATEGORIES = [
         ],
         "ask": ["Yarn or twine type", "Denier or ply", "Quantity required"],
         "children": ["toray", "kuralon-twine"],
-        "gallery": [("toray-yarn.jpg", "TORAY nylon yarn bobbins"), ("twine-kuralon.jpg", "Coil of twine")],
+        "gallery": [("prod-toray-yarn.jpg", "TORAY nylon yarn"), ("toray-yarn.jpg", "TORAY nylon yarn bobbins"), ("prod-kuralon-twine.jpg", "Kuralon twine bundle")],
     },
     {
         "slug": "sports-safety-agriculture-nets/",
@@ -267,8 +269,8 @@ PRODUCTS = {
         "name": "PP Rope",
         "title_html": "PP <em>rope</em>",
         "kind": "Ropes · Polypropylene",
-        "img": "rope-twisted.jpg",
-        "fit": "cover",
+        "img": "prod-pp-rope.jpg",
+        "fit": "contain",
         "blurb": "Polypropylene rope — light, and a familiar workhorse on fishing boats.",
         "tag": [("Material", "Polypropylene"), ("Supplied as", "Coils & hanks")],
         "body": [
@@ -276,7 +278,7 @@ PRODUCTS = {
             ("p", "We supply PP rope in a range of sizes. Tell us the diameter, length and colour you need and we will confirm availability and price."),
         ],
         "spec": [("Material", "Polypropylene (PP)"), ("Supplied as", "Coils and hanks"), ("Sizes", "Range of diameters — please ask")],
-        "gallery": [("rope-twisted.jpg", "Twisted rope coils"), ("rope-orange.jpg", "Rope hanks"), ("rope-mixed.jpg", "Assorted rope coils")],
+        "gallery": [("prod-pp-rope.jpg", "Yellow and black PP rope coils"), ("rope-twisted.jpg", "Twisted rope coils"), ("rope-orange.jpg", "Rope hanks"), ("rope-mixed.jpg", "Assorted rope coils")],
     },
     "vinylon": {
         "parent": "ropes/",
@@ -284,8 +286,8 @@ PRODUCTS = {
         "name": "Vinylon Rope",
         "title_html": "Vinylon <em>rope</em>",
         "kind": "Ropes · Vinylon fibre",
-        "img": "rope-white.jpg",
-        "fit": "cover",
+        "img": "prod-vinylon-rope.jpg",
+        "fit": "contain",
         "blurb": "Vinylon rope for fishing work, available in a range of sizes.",
         "tag": [("Material", "Vinylon"), ("Sizes", "Range — please ask")],
         "body": [
@@ -293,7 +295,7 @@ PRODUCTS = {
             ("p", "Vinylon rope is part of our rope range alongside HDPE and PP. Contact us with the diameter and length you need to check current stock."),
         ],
         "spec": [("Material", "Vinylon"), ("Sizes", "Range of diameters — please ask")],
-        "gallery": [("rope-white.jpg", "White rope coils"), ("rope-hanks.jpg", "Rope hanks")],
+        "gallery": [("prod-vinylon-rope.jpg", "White Vinylon rope hank"), ("rope-white.jpg", "White rope coils"), ("rope-hanks.jpg", "Rope hanks")],
     },
     "kuralon-rope": {
         "parent": "ropes/",
@@ -301,8 +303,8 @@ PRODUCTS = {
         "name": "Kuralon Rope",
         "title_html": "Kuralon <em>rope</em>",
         "kind": "Ropes · Kuralon (vinylon) fibre",
-        "img": "rope-white.jpg",
-        "fit": "cover",
+        "img": "prod-kuralon-rope.jpg",
+        "fit": "contain",
         "blurb": "Kuralon rope — a strong Japanese vinylon fibre rope for fishing and marine work.",
         "tag": [("Material", "Kuralon"), ("Sizes", "Range — please ask")],
         "body": [
@@ -310,7 +312,7 @@ PRODUCTS = {
             ("p", "Kuralon rope is part of our rope range alongside HDPE, PP and Vinylon. Tell us the diameter, length and quantity you need and we will confirm availability and price."),
         ],
         "spec": [("Material", "Kuralon (vinylon fibre)"), ("Supplied as", "Coils"), ("Sizes", "Range of diameters — please ask")],
-        "gallery": [("rope-white.jpg", "White rope coils"), ("rope-hanks.jpg", "Rope hanks")],
+        "gallery": [("prod-kuralon-rope.jpg", "White Kuralon rope coil"), ("rope-white.jpg", "White rope coils"), ("rope-hanks.jpg", "Rope hanks")],
     },
     "toray": {
         "parent": "nylon-yarn-twine/",
@@ -318,8 +320,8 @@ PRODUCTS = {
         "name": "TORAY Yarn",
         "title_html": "TORAY <em>yarn</em>",
         "kind": "Nylon yarn · Japan",
-        "img": "toray-yarn.jpg",
-        "fit": "cover",
+        "img": "prod-toray-yarn.jpg",
+        "fit": "contain",
         "blurb": "TORAY Japan nylon yarn — supplied in Sri Lanka exclusively by J.P. Fernando & Sons.",
         "tag": [("Origin", "Japan"), ("Agent", "Sole agent in Sri Lanka")],
         "body": [
@@ -327,7 +329,7 @@ PRODUCTS = {
             ("p", "Toray first produced nylon on a large scale in Japan in 1951 and holds the largest share of Japan's nylon market. Our &ldquo;Quality First&rdquo; principle led us to use TORAY Japan yarn in all of our own fishing-net brands."),
         ],
         "spec": [("Brand", "TORAY"), ("Origin", "Japan"), ("Distribution in Sri Lanka", "J.P. Fernando & Sons (sole agent)"), ("Used in", "All our own net brands, including SuperCatch")],
-        "gallery": [("toray-yarn.jpg", "TORAY nylon yarn bobbins"), ("brand-toray.jpg", "TORAY wordmark")],
+        "gallery": [("prod-toray-yarn.jpg", "TORAY nylon yarn"), ("toray-yarn.jpg", "TORAY nylon yarn bobbins"), ("brand-toray.jpg", "TORAY wordmark")],
     },
     "kuralon-twine": {
         "parent": "nylon-yarn-twine/",
@@ -335,8 +337,8 @@ PRODUCTS = {
         "name": "Kuralon Twine",
         "title_html": "Kuralon <em>twine</em>",
         "kind": "Twine · Kuralon (vinylon) fibre",
-        "img": "twine-kuralon.jpg",
-        "fit": "cover",
+        "img": "prod-kuralon-twine.jpg",
+        "fit": "contain",
         "blurb": "Kuralon twine for net-making, mending and everyday fishing work.",
         "tag": [("Material", "Kuralon"), ("Use", "Net-making & mending")],
         "body": [
@@ -344,7 +346,7 @@ PRODUCTS = {
             ("p", "Fishermen use it for making and mending nets and for lashing and general work on board. Tell us the thickness and quantity you need and we will confirm availability."),
         ],
         "spec": [("Material", "Kuralon (vinylon fibre)"), ("Uses", "Net-making, mending, lashing"), ("Thickness", "Range — please ask")],
-        "gallery": [("twine-kuralon.jpg", "Coil of twine")],
+        "gallery": [("prod-kuralon-twine.jpg", "Kuralon twine bundle")],
     },
     "indoor-cricket-net": {
         "parent": "sports-safety-agriculture-nets/",
@@ -405,7 +407,6 @@ PHOTO_CREDITS = [
     ("net-cricket.jpg", "Cricket nets: Acabashi", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Wanstead_%26_Snaresbrook_CC_cricket_nets,_Wanstead,_London_03.jpg"),
     ("net-safety.jpg", "Safety net: Marek Ślusarczyk (Tupungato)", "CC BY 3.0", "https://commons.wikimedia.org/wiki/File:11_Scaffolding_safety_plastic_net_-_polyethylene_material_nets_at_construction_site_in_Makati_Manila.jpg"),
     ("net-agriculture.jpg", "Agriculture net: Sandhiya Rangasami", "CC BY 4.0", "https://commons.wikimedia.org/wiki/File:Agricultural_shade_net.jpg"),
-    ("twine-kuralon.jpg", "Twine: Shams948", "CC0", "https://commons.wikimedia.org/wiki/File:Twine_03.jpg"),
 ]
 
 BRANDS = [

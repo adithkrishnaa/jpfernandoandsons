@@ -33,7 +33,7 @@ All 16 original WordPress URLs are kept, so existing links and search results st
 
 ## Enquiry form: important
 
-Right now, pressing **Send enquiry** opens the visitor's email app with the enquiry written out, addressed to dinesh@jpfernando.com. Nothing is sent without that email app.
+Right now, pressing **Send enquiry** opens the visitor's email app with the enquiry written out, addressed to contact@jpfernando.com and dinesh@jpfernando.com. Nothing is sent without that email app.
 
 To have forms deliver straight to an inbox, open `src/content.py` and fill in one value:
 
@@ -46,6 +46,6 @@ Then run `python src/build.py` and upload the website files again. Every form on
 
 - **WhatsApp:** not linked, because no WhatsApp number is published anywhere. Add one if they want it.
 - **Product specifications:** the old site gave no sizes or specs, so product pages ask buyers for their size and quantity instead of listing figures. Add real specs in `content.py` when the client supplies them.
-- **PP and Vinylon photos:** these pages use rope crops from the company banner. The banner doesn't say which rope type each crop shows, so they are captioned only as rope from the range. Replace them with real product photos when possible.
-- **Kuralon, cricket, safety and agriculture net photos:** these are free photos from Wikimedia Commons, not the company's own. Their licences need the photo credit in the footer (`PHOTO_CREDITS` in `content.py`). The twine photo is generic jute twine, and Kuralon rope reuses the white rope crop. Replace them with real product photos when possible, and remove the matching credit.
+- **Product photos:** the `prod-*.jpg` images (nylon nets, fishing lines, PP, Vinylon and Kuralon rope, Kuralon twine, TORAY yarn, fishing accessories) come from the client's product image sheet. Older photos stay in each page's gallery.
+- **Cricket, safety and agriculture net photos:** these are free photos from Wikimedia Commons, not the company's own. Their licences need the photo credit in the footer (`PHOTO_CREDITS` in `content.py`). Replace them with real product photos when possible, and remove the matching credit.
 - **Better photography:** most original images are small (about 800 px wide). New high-resolution photos of the products and the Sea Street store would lift the whole site.
