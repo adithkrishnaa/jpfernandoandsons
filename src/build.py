@@ -299,6 +299,7 @@ def footer(page, with_cta=True):
     cats = "".join(f'<li><a href="{rel(page, c["slug"])}">{e(c["name"])}</a></li>' for c in CATEGORIES)
     phones = "".join(f'<li><a href="tel:{t}">{d}</a> <span style="opacity:.6">· {l}</span></li>' for d, t, l in PHONES)
     hours = "".join(f"<li>{e(d)}: {e(h)}</li>" for d, h in HOURS)
+    credits = " · ".join(f'<a href="{e(u)}" target="_blank" rel="noopener">{e(c)}</a> ({e(l)})' for _, c, l, u in PHOTO_CREDITS)
     return f"""{cta_band(page) if with_cta else ''}
 </main>
 <footer class="ftr">
@@ -337,6 +338,7 @@ def footer(page, with_cta=True):
       <span>© {date.today().year} {e(NAME)}. All rights reserved.</span>
       <span>287/1 Sea Street, Colombo 11 · Sri Lanka</span>
     </div>
+    <p class="ftr__credits">Photos via Wikimedia Commons: {credits}</p>
   </div>
 </footer>
 {quickbar()}
@@ -785,7 +787,7 @@ def page_products():
                 f'<div class="card__foot">{add_btn(p, pr["slug"].strip("/"), pr["name"])}<span class="link-arrow">View {ICON["arrow"]}</span></div></div></article>')
     filt = '<button class="filter" type="button" data-filter="all" aria-pressed="true">All products</button>' + "".join(
         f'<button class="filter" type="button" data-filter="{k}" aria-pressed="false">{v}</button>' for k, v in groups.items())
-    body = f"""{head(p, 'Products', 'Nylon and HDPE fishing nets, monofilament lines, HDPE, PP and Vinylon ropes, TORAY nylon yarn and twine, tackle and fishing accessories from J.P. Fernando & Sons, Colombo.')}
+    body = f"""{head(p, 'Products', 'Nylon and HDPE fishing nets, monofilament lines, HDPE, PP, Vinylon and Kuralon ropes, TORAY nylon yarn, Kuralon twine, indoor cricket, safety and agriculture nets, tackle and fishing accessories from J.P. Fernando & Sons, Colombo.')}
 {header(p)}
 <section class="phero">
   <div class="mesh-bg mesh-bg--ink"></div>
