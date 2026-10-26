@@ -16,20 +16,20 @@ PHONES = [
     ("+94 11 243 5636", "+94112435636", "Office"),
     ("+94 11 247 3342", "+94112473342", "Office"),
 ]
-MOBILE = ("+94 76 239 2263", "+94762392263")   # mobile and WhatsApp
+MOBILE = ("+94 76 777 6890", "+94767776890")   # mobile and WhatsApp
 HOURS = [("Monday – Friday", "9:00 – 17:00"), ("Saturday", "9:00 – 13:00"), ("Sunday & full moon (Poya) days", "Closed")]
 MAP_URL = "https://maps.app.goo.gl/jWRP3BWpwNeFLu2g7"   # the company's Google Maps listing
 MAP_Q = "J.P Fernando & Sons, 287/1 Sea St, Colombo 01100, Sri Lanka"   # name of that listing, used for the embedded map
 
 # Social media profiles for the floating quick-access bar, menu and footer.
 # Paste the full profile URL to show an icon; leave "" to hide it.
-# whatsapp takes the number in international format, digits only, e.g. "94762392263".
+# whatsapp takes the number in international format, digits only, e.g. "94767776890".
 SOCIAL = {
     "facebook": "",
     "instagram": "",
     "linkedin": "",
     "x": "",
-    "whatsapp": "94762392263",
+    "whatsapp": "94767776890",
 }
 
 # Enquiry form delivery. Fill in ONE of these, then run: python src/build.py
